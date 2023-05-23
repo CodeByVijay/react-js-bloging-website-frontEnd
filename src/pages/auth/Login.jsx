@@ -1,14 +1,27 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
+import validator from "validator";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordType, setPasswordType] = useState("password");
 
+  const [emailError, setEmailError] = useState("");
+
   const [msg, setMsg] = useState("");
   const [msgColor, setMsgColor] = useState("");
+
+  const handleUserName = (e) => {
+    var email = e.target.value;
+    setUsername(email);
+    if (!validator.isEmail(email)) {
+      setEmailError("Enter valid Email!");
+    } else {
+      setEmailError("");
+    }
+  };
 
   const togglePassword = () => {
     passwordType === "password"
@@ -66,9 +79,12 @@ const Login = () => {
                     className="rounded-none rounded-r-lg bg-gray-50 border text-gray-700 focus:ring-1 focus:ring-blue-500 focus:outline-none block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:outline-none"
                     placeholder="Username"
                     value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    onChange={(e) => handleUserName(e)}
                   />
                 </div>
+                <span className={`error text-sm text-rose-600`}>
+                  {emailError}
+                </span>
               </div>
 
               <div className="mb-4">
