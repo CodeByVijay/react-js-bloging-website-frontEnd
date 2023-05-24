@@ -1,7 +1,10 @@
-import { React, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import validator from "validator";
+import GoogleLogin from "./socialLogin/GoogleLogin";
+import FaceBookLogin from "./socialLogin/FaceBookLogin";
+import TwitterLogin from "./socialLogin/TwitterLogin";
+import GithubLogin from "./socialLogin/GithubLogin";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -16,7 +19,7 @@ const Login = () => {
   const handleUserName = (e) => {
     var email = e.target.value;
     setUsername(email);
-    if (!validator.isEmail(email)) {
+    if (!validator.isEmail(email) && email.length > 0) {
       setEmailError("Enter valid Email!");
     } else {
       setEmailError("");
@@ -53,7 +56,7 @@ const Login = () => {
     <>
       <div className="container bg-[url('https://c0.wallpaperflare.com/preview/402/256/841/3drender-abstract-square-background.jpg')] bg-opacity-0 h-screen grid place-items-center">
         <div className="login w-full bg-transparent sm:w-full md:w-3/4 lg:w-2/6 px-4 py-8 shadow-2xl shadow-sky-400 hover:shadow-sky-500 rounded-xl select-none opacity-95">
-          <div className="head bg-orange-400 mx-2 text-center p-3 text-white font-black text-3xl font-serif rounded-t-lg">
+          <div className="head bg-orange-400 mx-2 text-center p-3 text-white font-black text-3xl font-sans rounded-t-lg">
             {" "}
             Login
             <p>
@@ -76,7 +79,7 @@ const Login = () => {
                   <input
                     type="text"
                     id="usernamen"
-                    className="rounded-none rounded-r-lg bg-gray-50 border text-gray-700 focus:ring-1 focus:ring-blue-500 focus:outline-none block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:outline-none"
+                    className="rounded-none rounded-r-lg bg-gray-50 border text-gray-700 focus:ring-1 focus:ring-blue-500 focus:outline-none block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:outline-none lowercase"
                     placeholder="Username"
                     value={username}
                     onChange={(e) => handleUserName(e)}
@@ -137,37 +140,14 @@ const Login = () => {
 
             <div className="text-center my-3 font-bold">-- OR --</div>
             <div className="flex justify-evenly">
-              <div
-                className="google p-3 bg-rose-100 text-red-600 text-lg cursor-pointer rounded-lg hover:bg-rose-200 hover:text-red-700 hover:text-xl"
-                title="Google Login"
-              >
-                {" "}
-                <FaGoogle />{" "}
-              </div>
-              <div
-                className="facebook p-3 bg-blue-500 text-white text-lg cursor-pointer rounded-lg hover:text-xl"
-                title="Facebook Login"
-              >
-                {" "}
-                <FaFacebook />{" "}
-              </div>
-              <div
-                className="twitter p-3 bg-white text-blue-500 text-lg cursor-pointer rounded-lg hover:bg-gray-200 hover:text-blue-600 hover:text-xl"
-                title="Twitter Login"
-              >
-                <FaTwitter />
-              </div>
-              <div
-                className="github p-3 bg-white text-black text-lg cursor-pointer rounded-lg hover:bg-gray-200 hover:text-xl"
-                title="Github Login"
-              >
-                {" "}
-                <FaGithub />{" "}
-              </div>
+              <GoogleLogin />
+              <FaceBookLogin />
+              <TwitterLogin />
+              <GithubLogin />
             </div>
           </div>
           <hr className="mx-2" />
-          <div className="footer bg-gray-100 mx-2 text-gray-700 text-center px-4 py-2 font-light text-md font-mono rounded-b-lg">
+          <div className="footer bg-gray-100 mx-2 text-gray-700 text-center px-4 py-2 font-light text-md font-serif rounded-b-lg">
             <div className="flex justify-between">
               <Link to="/register" className="hover:text-blue-700">
                 Register New Account.
