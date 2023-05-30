@@ -11,7 +11,7 @@ const GithubLogin = () => {
     try {
       const profileResponse = await axios.get("https://api.github.com/user", {
         headers: {
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer <Github Personal Access Token>`,
           Accept: "application/json",
         },
       });
