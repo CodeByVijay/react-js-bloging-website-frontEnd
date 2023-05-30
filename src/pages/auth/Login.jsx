@@ -55,7 +55,7 @@ const Login = () => {
   return (
     <>
       <div className="container bg-[url('https://c0.wallpaperflare.com/preview/402/256/841/3drender-abstract-square-background.jpg')] bg-opacity-0 h-screen grid place-items-center">
-        <div className="login w-full bg-transparent sm:w-full md:w-3/4 lg:w-2/6 px-4 py-8 shadow-2xl shadow-sky-400 hover:shadow-sky-500 rounded-xl select-none opacity-95">
+        <div className="login w-full bg-transparent sm:w-full md:w-3/4 lg:w-3/6 xl:w-2/6 px-4 py-8 shadow-2xl shadow-sky-400 hover:shadow-sky-500 rounded-xl select-none opacity-95">
           <div className="head bg-orange-400 mx-2 text-center p-3 text-white font-black text-3xl font-sans rounded-t-lg">
             {" "}
             Login
